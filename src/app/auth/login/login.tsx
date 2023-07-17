@@ -1,11 +1,20 @@
 "use client"
 
+import {useState} from "react";
 import { Fragment } from "react";
 
 
 export default function LoginComponent() {
 
+  const [email, setEmail] = useState('');
+  const [password,setPassword] =useState('');
 
+  function onSubmit(){
+     console.log({
+      email: email,
+      Password: password
+     })
+  }
 
   return (
     <Fragment>
@@ -24,7 +33,10 @@ export default function LoginComponent() {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
                 type="email"
+                name="email"
                 placeholder="Enter your Email"
+                value={email}
+                onChange={(event)=>{setEmail(event?.target.value)}}
               />
             </div>
             <div className="mb-6">
@@ -38,11 +50,14 @@ export default function LoginComponent() {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="password"
+                name="password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(event)=>{setPassword(event?.target.value)}}
               />
             </div>
             <div className="flex items-center justify-between">
-              <button
+              <button onClick={onSubmit}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 type="button"
               >
