@@ -91,7 +91,7 @@ export default function RegisterComponent() {
             </div>
           </form>
           <p className="text-center text-gray-500 text-xs mt-5">
-            &copy; 2023 My Website. All rights reserved.
+                       &copy; 2023 Information && intelligence. All rights reserved.
           </p>
         </div>
       </div>
