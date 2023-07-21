@@ -131,6 +131,7 @@ export default function RegisterComponent({ registerData }: Show) {
           </form>
           <p className="text-center text-gray-500 text-xs mt-5">
             &copy; 2023 Information and Intelligence. All rights reserved.
+
           </p>
         </div>
       </div>
