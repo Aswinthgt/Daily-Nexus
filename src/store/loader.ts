@@ -12,4 +12,4 @@ export const loader = createSlice({
     }
 })
 
-export default loader.actions
+export default loader.actions;
