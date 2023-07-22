@@ -10,7 +10,7 @@ export default function MainPage ({ children }: { children: React.ReactNode }) {
     return (
       <Fragment>
         <Toolbar />
-        <div className={load ? "pointer-events-none opacity-40" : undefined}>{children}</div>
+        <div className={load ? "pointer-events-none opacity-40" : "z-0"}>{children}</div>
         <ToastContainer />
       </Fragment>
     );
