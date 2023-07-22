@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import userAuth from "@/dbconfig/models/auth";
 import { NextResponse, NextRequest } from "next/server";
 import connectDb from "@/dbconfig/dbconfig";
-import jwt from "jsonwebtoken";
+import {sign} from "jsonwebtoken";
 
 connectDb();
 
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
           );
      }
 
-     const createdToken = await jwt.sign(
+     const createdToken = sign(
           { id: findedUser.Id },
           process.env.JWT_SECRET_KEY!,
           {

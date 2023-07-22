@@ -13,7 +13,7 @@ export default function Toolbar() {
   const load = useSelector((state: Load) => state.load.loader);
   return (
     <Fragment>
-      <div className="sticky top-0 z-10">
+      <div className="sticky top-0 z-20 bg-white-500">
         <div className="flex items-center justify-between">
           <div>
             <Image
