@@ -54,7 +54,6 @@ export default function LoginComponent() {
         loginData
       );
       if (response.statusText === "OK") {
-        dispatch(loader.loader({ loader: false }));
         router.push("../dashboard")
         toast.success(response.data.message, {
           position: toast.POSITION.TOP_CENTER,
@@ -68,6 +67,8 @@ export default function LoginComponent() {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
       });
+    }finally{
+      dispatch(loader.loader({ loader: false }));
     }
   }
 
