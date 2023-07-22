@@ -24,12 +24,14 @@ export default function Register() {
   async function registerSave(registerdata: Register) {
     try {
       dispatch(loader.loader({ loader: true }));
+      console.log('first')
       const response = await axios.post(
         "../api/auth/register",
         registerdata
       );
-      if (response.statusText === "OK") {
-        dispatch(loader.loader({ loader: false }));
+      console.log('second')
+      if (response.status === 200) {
+        console.log('third')
         setMessage(response.data.message)
         setShowEmail(true);
         toast.success(response.data.message, {
@@ -44,6 +46,8 @@ export default function Register() {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
       });
+    }finally{
+      dispatch(loader.loader({ loader: false }));
     }
   }
 
