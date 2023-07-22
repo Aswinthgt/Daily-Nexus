@@ -2,6 +2,6 @@
 
 export default function User() {
     return (
-        <div>dashboard</div>
+        <div className="flex justify-center items-center mt-20">Dashboard</div>
     )
 }

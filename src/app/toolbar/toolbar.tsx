@@ -13,18 +13,18 @@ export default function Toolbar() {
   const load = useSelector((state: Load) => state.load.loader);
   return (
     <Fragment>
-      <div className="sticky top-0 z-20 bg-white-500">
+      <div className="sticky ms-8 me-8 mt-4 top-0 z-20 bg-white-500">
         <div className="flex items-center justify-between">
           <div>
             <Image
               src="/assets/mainlogo.png"
               alt="mailLogo"
-              width={150}
-              height={100}
+              width={60}
+              height={30}
               priority
             />
           </div>
-          <div className="me-8 text-white">
+          <div className="text-white">
             <Link
               href={
                 pathName === "/auth/login" ? "/auth/register" : "/auth/login"

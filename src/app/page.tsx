@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <Image src="/assets/mainlogo.png" alt="Logo" width={300} height={200} />
+      <Image src="/assets/mainlogo.png" alt="Logo" width={300} height={100} />
     </div>
   );
 }
