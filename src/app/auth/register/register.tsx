@@ -24,7 +24,7 @@ export default function RegisterComponent({ registerData }: Show) {
     const errors = validationFn();
 
     if (Object.keys(errors).length === 0) {
-      registerData(register, true);
+      registerData(register);
     } else {
       setErrors(errors);
     }

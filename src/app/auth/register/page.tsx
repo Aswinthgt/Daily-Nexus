@@ -14,7 +14,7 @@ export default function Register() {
   const [showEmail, setShowEmail] = useState(false);
   const [message,setMessage] = useState('check your mail')
 
-  function sendData(register: Register, value: boolean) {
+  function sendData(register: Register) {
     registerSave(register);
   }
 

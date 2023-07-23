@@ -5,7 +5,7 @@ export interface Register {
 }
 
 export interface Show {
-    registerData:(register:Register, value:boolean)=> void;
+    registerData:(register:Register)=> void;
 }
 
 export interface Message{
