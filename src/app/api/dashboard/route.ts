@@ -10,15 +10,7 @@ export async function GET(req: NextRequest) {
 
   try{
 
-    const reqBody = await req.cookies.get("token");
-  const token = reqBody?.value;
-  if (!token) {
-    return NextResponse.json(
-      { message: "user token error , Please Login" },
-      { status: 404 }
- );
-  }
-  const verifiedToken: any = verifyToken(token)
+  const verifiedToken: any = verifyToken(req)
 
   if (!verifiedToken) {
     return NextResponse.json(

@@ -1,9 +1,12 @@
-import { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+import { NextRequest } from "next/server";
 
-export function verifyToken(token:string) {
+export function verifyToken(req :NextRequest) {
    try{
+    const reqBody = req.cookies.get("token");
+    const token = reqBody?.value;
 
-    const tokenData = verify(token,process.env.JWT_SECRET_KEY!);
+    const tokenData = jwt.verify(token!,process.env.JWT_SECRET_KEY!);
     if(tokenData){
         return tokenData;
     }else {
