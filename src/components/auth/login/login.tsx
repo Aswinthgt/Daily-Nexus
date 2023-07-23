@@ -3,14 +3,13 @@
 import { useState, Fragment, useEffect } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import { Login } from "./model";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import loader from "@/store/loader";
-
-
-
+import Image from "next/image";
+import "./login.css"
 
 export default function LoginComponent() {
   const [email, setEmail] = useState("");
@@ -43,28 +42,30 @@ export default function LoginComponent() {
   }
 
   async function Loginsave(loginData: Login) {
-
     try {
       dispatch(loader.loader({ loader: true }));
-      const response = await axios.post(
-        "../api/auth/login",
-        loginData
-      );
-        toast.success(response.data.message);
-        router.push("/dashboard")
+      const response = await axios.post("../api/auth/login", loginData);
+      toast.success(response.data.message);
+      router.push("/dashboard");
     } catch (er) {
-      toast.error((er as any)?.response?.data.message ?  (er as any).response.data.message :   (er as any)?.message);
-    }finally{
+      toast.error(
+        (er as any)?.response?.data.message
+          ? (er as any).response.data.message
+          : (er as any)?.message
+      );
+    } finally {
       dispatch(loader.loader({ loader: false }));
     }
   }
 
-
-
   function validationFn() {
     let error: Partial<Login> = {};
 
-    if (!email.includes("@") && !email.includes(".") && email.trim().length < 5) {
+    if (
+      !email.includes("@") &&
+      !email.includes(".") &&
+      email.trim().length < 5
+    ) {
       error.email = "Email Invalid";
     }
     if (password.trim().length < 8) {
@@ -78,9 +79,21 @@ export default function LoginComponent() {
       <div className="flex justify-center items-center mt-20">
         <div className="w-full max-w-xs">
           <form className="bg-white shadow-md rounded px-8 py-6">
-            <h2 className="text-2xl bg-blue-500 rounded py-1 text-black text-center mb-6">
-              Login
-            </h2>
+            <div className="flex justify-center items-center mb-4">
+              <div className="bg-blue-200 p-0.8 rounded-l-[25px] pe-3">
+                <Image
+                  src="/assets/mainlogo.png"
+                  alt="Logo"
+                  width={56}
+                  height={100}
+                />
+              </div>
+
+              <h2 className="bg-blue-200 p-3 pe-10 rounded-r-[25px] text-2xl font-tektur">
+                Login
+              </h2>
+            </div>
+
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -89,7 +102,9 @@ export default function LoginComponent() {
                 Email
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className={`border-2 ${
+                  errors?.email ? "border-rose-300" : "border-sky-200"
+                } w-full focus:outline-none rounded px-3 py-2 focus:border-sky-500`}
                 id="email"
                 type="email"
                 name="email"
@@ -100,7 +115,7 @@ export default function LoginComponent() {
                 }}
               />
               {errors?.email && (
-                <p className="text-red-400 italic">{errors.email}</p>
+                <p className="text-rose-300 text-sm">{errors.email}</p>
               )}
             </div>
             <div className="mb-6">
@@ -111,7 +126,9 @@ export default function LoginComponent() {
                 Password
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className={`border-2 ${
+                  errors?.password ? "border-rose-300" : "border-sky-200"
+                } w-full focus:outline-none rounded px-3 py-2 focus:border-sky-500`}
                 id="password"
                 type="password"
                 name="password"
@@ -121,14 +138,14 @@ export default function LoginComponent() {
                   setPassword(event?.target.value);
                 }}
               />
-               {errors?.password && (
-                <p className="text-red-400 italic">{errors.password}</p>
+              {errors?.password && (
+                <p className="text-rose-300 text-sm">{errors.password}</p>
               )}
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-end">
               <button
                 onClick={onSubmit}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-100 hover:outline hover:outline-offset-2 hover:outline-blue-500 hover:text-blue-500 text-white font-bold py-2 px-4 rounded focus:bg-blue-500 focus:text-white"
                 type="button"
               >
                 Sign In

@@ -1,6 +1,6 @@
 "use client"
 
-import LoginComponent from "./login";
+import LoginComponent from "@/components/auth/login/login";
 
 export default function Login(){
     return (

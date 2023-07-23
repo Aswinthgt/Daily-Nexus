@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from "react";
 import { Register, Show } from "./model";
+import Image from "next/image";
 
 export default function RegisterComponent({ registerData }: Show) {
   const [register, setRegister] = useState<Register>({
@@ -55,9 +56,20 @@ export default function RegisterComponent({ registerData }: Show) {
       <div className="flex justify-center items-center mt-20">
         <div className="w-full max-w-xs">
           <form className="bg-white shadow-md rounded px-8 py-6">
-            <h2 className="text-2xl bg-blue-500 rounded py-1 text-black text-center mb-6">
-              Register
-            </h2>
+          <div className="flex justify-center items-center mb-4">
+              <div className="bg-blue-200 p-0.8 rounded-l-[25px] pe-3">
+                <Image
+                  src="/assets/mainlogo.png"
+                  alt="Logo"
+                  width={56}
+                  height={100}
+                />
+              </div>
+
+              <h2 className="bg-blue-200 p-3 pe-10 rounded-r-[25px] text-2xl font-tektur">
+                Register
+              </h2>
+            </div>
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -66,7 +78,7 @@ export default function RegisterComponent({ registerData }: Show) {
                 Username
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className={`border-2 ${errors?.userName ?'border-rose-300' : 'border-sky-200'} w-full focus:outline-none rounded px-3 py-2 focus:border-sky-500`}
                 id="username"
                 type="text"
                 name="userName"
@@ -75,7 +87,7 @@ export default function RegisterComponent({ registerData }: Show) {
                 onChange={setRegisterValue}
               />
               {errors?.userName && (
-                <p className="text-red-400 italic">{errors.userName}</p>
+                <p className="text-rose-300 text-sm">{errors.userName}</p>
               )}
             </div>
             <div className="mb-4">
@@ -86,7 +98,7 @@ export default function RegisterComponent({ registerData }: Show) {
                 Email
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className={`border-2 ${errors?.email ?'border-rose-300' : 'border-sky-200'} w-full focus:outline-none rounded px-3 py-2 focus:border-sky-500`}
                 id="email"
                 type="email"
                 name="email"
@@ -95,7 +107,7 @@ export default function RegisterComponent({ registerData }: Show) {
                 onChange={setRegisterValue}
               />
               {errors?.email && (
-                <p className="text-red-400 italic">{errors.email}</p>
+                <p className="text-rose-300 text-sm">{errors.email}</p>
               )}
             </div>
             <div className="mb-6">
@@ -106,7 +118,7 @@ export default function RegisterComponent({ registerData }: Show) {
                 Password
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className={`border-2 ${errors?.password ?'border-rose-300' : 'border-sky-200'} w-full focus:outline-none rounded px-3 py-2 focus:border-sky-500`}
                 id="password"
                 type="password"
                 name="password"
@@ -115,13 +127,13 @@ export default function RegisterComponent({ registerData }: Show) {
                 onChange={setRegisterValue}
               />
               {errors?.password && (
-                <p className="text-red-400 italic">{errors.password}</p>
+                <p className="text-rose-300 text-sm">{errors.password}</p>
               )}
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-end">
               <button
                 onClick={onSubmit}
-                className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-100 hover:outline hover:outline-offset-2 hover:outline-blue-500 hover:text-blue-500 text-white font-bold py-2 px-4 rounded focus:bg-blue-500 focus:text-white"
                 type="button"
               >
                 Register
