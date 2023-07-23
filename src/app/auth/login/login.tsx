@@ -50,10 +50,8 @@ export default function LoginComponent() {
         "../api/auth/login",
         loginData
       );
-      if (response.statusText === "OK") {
-        router.push("/dashboard")
         toast.success(response.data.message);
-      }
+        router.push("/dashboard")
     } catch (er) {
       console.log(er)
       router.push("/auth/login")
