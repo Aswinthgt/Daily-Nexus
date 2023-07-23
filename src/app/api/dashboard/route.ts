@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   const token = reqBody?.value;
   if (!token) {
     return NextResponse.json(
-      { message: "user Validation Found , Please Login" },
+      { message: "user token error , Please Login" },
       { status: 404 }
  );
   }
