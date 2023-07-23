@@ -51,7 +51,7 @@ export default function LoginComponent() {
         loginData
       );
       if (response.statusText === "OK") {
-        router.push("../dashboard")
+        router.push("/dashboard")
         toast.success(response.data.message);
       }
     } catch (er) {
