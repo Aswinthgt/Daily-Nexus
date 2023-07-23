@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
   const userData = await userAuth.findOne({ _id: id }, { _id: 0, userName: 1, email: 1 });
   if (!userData) {
     return NextResponse.json(
-      { message: "user Validation error , Please Login" },
+      { message: "user Validation error occur , Please Login" },
       { status: 404 }
  );
   } else {
