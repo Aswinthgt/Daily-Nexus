@@ -22,33 +22,9 @@ export default function Register() {
   const router = useRouter();
 
   async function registerSave(registerdata: Register) {
-    try {
-      dispatch(loader.loader({ loader: true }));
-      console.log('first')
-      const response = await axios.post(
-        "../api/auth/register",
-        registerdata
-      );
-      console.log('second')
-      if (response.status === 200) {
-        console.log('third')
-        setMessage(response.data.message)
-        setShowEmail(true);
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000,
-        });
-      }
-    } catch (er) {
-      dispatch(loader.loader({ loader: false }));
-      router.push("/auth/login")
-      toast.warning((er as any)?.data?.message ?  (er as any).data.message :   (er as any)?.message, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
-    }finally{
-      dispatch(loader.loader({ loader: false }));
-    }
+    setShowEmail(true);
+    
+    
   }
 
   return (
