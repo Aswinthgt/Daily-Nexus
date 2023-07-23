@@ -7,7 +7,10 @@ import { Types } from "mongoose"
 connectDb();
 
 export async function GET(req: NextRequest) {
-  const reqBody = req.cookies.get("token");
+
+  try{
+
+    const reqBody = await req.cookies.get("token");
   const token = reqBody?.value;
   if (!token) {
     return NextResponse.json(
@@ -36,6 +39,16 @@ export async function GET(req: NextRequest) {
       { status: 200 }
     );
   }
+
+  }catch(er){
+    return NextResponse.json(
+      { message: "OPPS.. Unhandled Eroor , Sorry we are Leaving" },
+      { status: 400 }
+    );
+  }
+
+
+  
 
 
 } 
