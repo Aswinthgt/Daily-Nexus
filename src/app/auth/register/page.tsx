@@ -8,7 +8,7 @@ import loader from "@/store/loader";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import toast from 'react-hot-toast';
 
 export default function Register() {
   const [showEmail, setShowEmail] = useState(false);
@@ -31,14 +31,11 @@ export default function Register() {
       if (response.status === 200) {
         setMessage(response.data.message)
         setShowEmail(true);
+        toast.success(response.data.message);
       }
     } catch (er) {
-      dispatch(loader.loader({ loader: false }));
       router.push("/auth/login")
-      toast.warning((er as any)?.data?.message ?  (er as any).data.message :   (er as any)?.message, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
+      toast.error((er as any)?.response?.data.message ?  (er as any).response.data.message :   (er as any)?.message);
     }finally{
       dispatch(loader.loader({ loader: false }));
     }

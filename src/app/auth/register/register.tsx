@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment, useState } from "react";
-import "react-toastify/dist/ReactToastify.css";
 import { Register, Show } from "./model";
 
 export default function RegisterComponent({ registerData }: Show) {

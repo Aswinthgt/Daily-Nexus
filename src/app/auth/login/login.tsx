@@ -3,7 +3,7 @@
 import { useState, Fragment, useEffect } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { toast } from "react-toastify";
+import toast from 'react-hot-toast';
 import { Login } from "./model";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
@@ -23,10 +23,7 @@ export default function LoginComponent() {
 
   useEffect(() => {
     if (params) {
-      toast.success(params, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
+      toast.success(params);
     }
   }, [params]);
 
@@ -55,18 +52,12 @@ export default function LoginComponent() {
       );
       if (response.statusText === "OK") {
         router.push("../dashboard")
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000,
-        });
+        toast.success(response.data.message);
       }
     } catch (er) {
-      dispatch(loader.loader({ loader: false }));
+      console.log(er)
       router.push("/auth/login")
-      toast.warning((er as any)?.data?.message ?  (er as any).data.message :   (er as any)?.message, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-      });
+      toast.error((er as any)?.response?.data.message ?  (er as any).response.data.message :   (er as any)?.message);
     }finally{
       dispatch(loader.loader({ loader: false }));
     }
