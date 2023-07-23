@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
  );
   } else {
     return NextResponse.json(
-      { data: userData, message: "Welcome To Information + Intelligence" },
+      { data: userData, message: "Welcome To Information + Intelligence",token:req.cookies.get("token")},
       { status: 200 }
     );
   }
