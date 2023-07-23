@@ -1,7 +1,11 @@
 "use client"
 
+import { useEffect } from "react"
+import Dashboard from "./dashboard"
+
 export default function User() {
+
     return (
-        <div className="flex justify-center items-center mt-20">Dashboard</div>
+        <Dashboard/>
     )
 }

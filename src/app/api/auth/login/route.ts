@@ -28,8 +28,8 @@ export async function POST(req: NextRequest) {
           );
      }
 
-     const createdToken = sign(
-          { id: findedUser.Id },
+     const createdToken = await sign(
+          { id: findedUser._id },
           process.env.JWT_SECRET_KEY!,
           {
                expiresIn: "24h",

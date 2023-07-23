@@ -13,7 +13,7 @@ export default function Toolbar() {
   const load = useSelector((state: Load) => state.load.loader);
   return (
     <Fragment>
-      <div className="sticky ms-8 me-8 mt-4 top-0 z-20 bg-white-500">
+      <div className="sticky ps-8 pe-8 pt-4 pb-4 top-0 z-20 bg-white-800 shadow-lg">
         <div className="flex items-center justify-between">
           <div>
             <Image
@@ -36,7 +36,7 @@ export default function Toolbar() {
           </div>
         </div>
         {load && (
-          <BarLoader className="sticky top-5" width="100%" color="#007aff" />
+          <BarLoader className="sticky top-5 p-0" width="100%" color="#007aff" />
         )}
       </div>
     </Fragment>
