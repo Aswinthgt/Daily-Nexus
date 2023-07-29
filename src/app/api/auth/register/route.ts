@@ -72,7 +72,7 @@ export async function GET(req: NextRequest) {
     const saveResponse = await newUser.save();
     const encryptMessage = "Registered Sucesfully Please Login"
     if (saveResponse) {
-        return NextResponse.redirect(new URL(`${process.env.URL!}/auth/login?message=${encryptMessage}`))
+        return NextResponse.redirect(new URL(`${process.env.URL!}/auth/login`))
     } else {
         return NextResponse.redirect(new URL(process.env.URL!))
     }

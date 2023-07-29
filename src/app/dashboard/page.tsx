@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import Dashboard from "./dashboard"
+import Dashboard from "../../components/dashboard/dashboard"
 
 export default function User() {
 

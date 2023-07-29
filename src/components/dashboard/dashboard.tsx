@@ -6,7 +6,10 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import loader from "@/store/loader";
 import { useRouter } from "next/navigation";
-import { User } from "./model";
+import { User } from "../../app/dashboard/model";
+import Profile from "./profile/profile";
+import Card from "./card/card";
+import SideBar from "./sidebar/sidebar";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -38,21 +41,17 @@ export default function Dashboard() {
   }
 
   return (
-    <Fragment>
-      {!user && (
-        <div className="flex justify-center items-center mt-20">Loading...</div>
-      )}
-
-      {user && (
-        <div className="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-          <h3 className="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight text-center">
-            {user.userName}
-          </h3>
-          <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm text-center">
-            {user.email}
-          </p>
-        </div>
-      )}
-    </Fragment>
+    <div>
+      
+      <Card>
+        {!user && (
+          <div className="flex justify-center items-center mt-20">
+            Loading...
+          </div>
+        )}
+        <Profile></Profile>
+        
+      </Card>
+    </div>
   );
 }

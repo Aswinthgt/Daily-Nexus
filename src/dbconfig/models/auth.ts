@@ -17,6 +17,18 @@ const userAuth = new mongoose.Schema({
         type:String,
         required:true,
         minlength:8
+    },
+    googleId:{
+        type:String,
+        required:false
+    },
+    emailVerfied:{
+        type:String,
+        required:false
+    },
+    picture: {
+        type:String,
+        required :false
     }
 });
 
