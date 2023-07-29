@@ -6,8 +6,6 @@ export function UserDetails() {
 
   const { data :session } = useSession();
 
-  console.log(session)
-
   return (
     <div className="flex mt-10">
       <div className="flex-none w-14 min-h-screen"></div>
