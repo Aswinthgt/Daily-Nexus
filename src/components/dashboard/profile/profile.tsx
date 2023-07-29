@@ -3,7 +3,7 @@ import { UserDetails } from "./userDetails/userDetails"
 
 export default function Profile(){
     return (
-        <div>
+        <div className="scale-75">
             <UserDetails></UserDetails>
         </div>
     )

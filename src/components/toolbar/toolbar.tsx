@@ -5,28 +5,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 import BarLoader from "react-spinners/BarLoader";
-import { useDispatch, useSelector } from "react-redux";
 import { Load } from "@/models/interface";
 import { signOut, useSession } from "next-auth/react";
 import styles from "./toolbar.module.css";
-import sidebar from "@/store/sidebar"
+import { useSelector } from "react-redux";
+
 
 export default function Toolbar() {
   const pathName = usePathname();
   const load = useSelector((state: Load) => state.load.loader);
-  const sidebarValue = useSelector((state:any)=>state.sideBar);
   const { data: session } = useSession();
-  const dispatch = useDispatch();
 
-  function opensidebar() {
-     dispatch(sidebar.openSideBar())
-  }
 
   return (
     <Fragment>
       <div className="sticky ps-8 pe-8 pt-4 pb-4 top-0 z-20">
         <div className="flex items-center justify-between">
-          <div onClick={opensidebar} className="cursor-pointer">
+          <div className="cursor-pointer">
             <Image
               className={styles.spin}
               src="/assets/mainlogo.png"

@@ -7,9 +7,7 @@ export function UserDetails() {
   const { data :session } = useSession();
 
   return (
-    <div className="flex mt-10">
-      <div className="flex-none w-14 min-h-screen"></div>
-      <div className="grow min-h-screen">
+ 
         <div className="grid grid-cols-1 gap-6 h-40 md:grid-cols-3">
           <div className="bg-gradient-to-r from-sky-100 ring-2 ring-blue-300 rounded-lg shadow-md hover:ring-blue-500 hover:shadow-2xl hover:transition hover:duration-500 flex items-center justify-evenly">
             <Image
@@ -24,8 +22,6 @@ export function UserDetails() {
           <div></div>
           <div></div>
         </div>
-      </div>
-      <div className="flex-none w-14 min-h-screen"></div>
-    </div>
+     
   );
 }
