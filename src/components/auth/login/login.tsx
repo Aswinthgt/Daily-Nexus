@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, Fragment, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { Login } from "./model";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import loader from "@/store/loader";
 import Image from "next/image";
 import "./login.css";
 import { signIn } from "next-auth/react";
@@ -18,8 +14,6 @@ export default function LoginComponent() {
   const [errors, setErrors] = useState<Partial<Login>>();
   const routerparam = useSearchParams();
   const params = routerparam.get("message");
-  const dispatch = useDispatch();
-  const router = useRouter();
 
   useEffect(() => {
     if (params) {
@@ -43,14 +37,12 @@ export default function LoginComponent() {
   }
 
   async function Loginsave(loginData: Login) {
-   
-      signIn("credentials", {
-        email: loginData.email,
-        password: loginData.password,
-        redirect: true,
-        callbackUrl: "/dashboard",
-      });
-  
+    signIn("credentials", {
+      email: loginData.email,
+      password: loginData.password,
+      redirect: true,
+      callbackUrl: "/dashboard",
+    });
   }
 
   function validationFn() {
@@ -70,10 +62,9 @@ export default function LoginComponent() {
   }
 
   return (
-    <Fragment>
+    <>
       <div className="flex justify-center items-center">
         <div className="flex w-full justify-center">
-          
           <form className="bg-white shadow-md rounded px-8 py-6">
             <div className="flex justify-center items-center mb-4">
               <div className="bg-blue-200 p-0.8 rounded-l-[25px] pe-3">
@@ -159,7 +150,9 @@ export default function LoginComponent() {
             </div>
 
             <div
-              onClick={() => signIn('google',{redirect:true, callbackUrl:"/dashboard"})}
+              onClick={() =>
+                signIn("google", { redirect: true, callbackUrl: "/dashboard" })
+              }
               className="flex justify-center rounded ring-2 ring-sky-200 p-3 cursor-pointer hover:bg-blue-200 hover:transition hover:duration-500"
             >
               <div className="me-2">Login Using </div>
@@ -171,14 +164,20 @@ export default function LoginComponent() {
               ></Image>
             </div>
           </form>
-          <div className="hidden md:block shadow-md"> 
-            <Image src="/assets/login.png" alt="LoginImage" width={400} height={100} className="m-5"></Image>
+          <div className="hidden md:block shadow-md">
+            <Image
+              src="/assets/login.png"
+              alt="LoginImage"
+              width={400}
+              height={100}
+              className="m-5"
+            ></Image>
           </div>
           {/* <p className="text-center text-gray-500 text-xs mt-5">
             &copy; 2023 Information && intelligence. All rights reserved.
           </p> */}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
